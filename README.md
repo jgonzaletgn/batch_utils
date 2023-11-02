@@ -5,6 +5,10 @@ Recopilation of batch utils to automatize different tasks
 
 [Save files of a directory in folders with the name of file extensions](#save-files-of-a-directory-in-folders-with-the-name-of-file-extensions)
 
+[Backups to an external drive](#backups-to-an-external-drive)
+
+[Remote desktop automatic connection](#remote-desktop-automatic-connection)
+
 ## Create folders with the name provided by a txt file
 The script is ``create_folders_file.bat``. This script create folders in a directory with the name of the lines provided by a .txt file. Useful for repetitive folder creation tasks.
 
@@ -52,6 +56,67 @@ rem Move the file to directory
 move "%%a" "%%~dpa%%~xa\"
 ))
 ```
+
+## Backups to an external drive
+
+```batch
+@echo off
+setlocal enabledelayedexpansion
+
+rem Set source and destination directories
+set "source=C:\SourceFolder"
+set "destination=D:\BackupFolder"
+
+rem Set a timestamp for the backup folder
+for /f "tokens=2-4 delims=/ " %%a in ('date /t') do (
+  set "datestamp=%%c-%%a-%%b"
+)
+
+rem Create a new backup folder with the timestamp
+set "backup_folder=!destination!\Backup_!datestamp!"
+mkdir "!backup_folder!"
+
+rem Copy files from source to the backup folder
+xcopy "!source!\*" "!backup_folder!\" /E /Y
+
+echo Backup completed to !backup_folder!
+pause
+```
+
+In this script:
+
+- ``source`` should be set to the path of the folder you want to back up.
+- ``destination`` should be set to the path where you want to store the backup.
+- The script generates a timestamp for the backup folder using the current date (in the format YYYY-MM-DD).
+- It creates a new folder in the destination with the timestamp and copies all the files from the source folder to the backup folder using xcopy.
+- You can customize the xcopy options to suit your needs. /E copies directories and subdirectories, and /Y suppresses overwrite prompts.
+
+## Remote desktop automatic connection
+
+This script automatize the remote desktop connection using Microsoft Remote Desktop client.
+
+
+```batch
+@echo off
+
+rem Set the IP address or hostname of the remote computer
+set "remote_computer=192.168.1.100"
+
+rem Set the username for the remote session
+set "username=your_username"
+
+rem Set the password for the remote session (not recommended for security reasons)
+set "password=your_password"
+
+rem Launch the Remote Desktop Client (mstsc.exe) with the specified parameters
+mstsc.exe /v:%remote_computer% /u:%username% /p:%password%
+```
+
+Should define:
+
+- Username
+- Password
+- IP address or hostname of the remote computer
 
 
 
