@@ -9,6 +9,8 @@ Recopilation of batch utils to automatize different tasks
 
 [Remote desktop automatic connection](#remote-desktop-automatic-connection)
 
+[Replace comma to points in csv file](#replace-comma-to-points-in-csv-file)
+
 ## Create folders with the name provided by a txt file
 The script is ``create_folders_file.bat``. This script create folders in a directory with the name of the lines provided by a .txt file. Useful for repetitive folder creation tasks.
 
@@ -118,5 +120,32 @@ Should define:
 - Password
 - IP address or hostname of the remote computer
 
+## Replace comma to points in csv file
 
+```batch
+@echo off
+setlocal enabledelayedexpansion
 
+rem Set the input and output file names
+set "input_file=input.csv"
+set "output_file=output.csv"
+
+rem Replace commas with points in the input file and save the result to the output file
+(for /f "usebackq tokens=*" %%a in ("%input_file%") do (
+    set "line=%%a"
+    set "line=!line:,= .!"
+    echo !line!>>"%output_file%"
+))
+
+echo Comma to point replacement completed.
+
+```
+
+In this script:
+
+- Replace ``input.csv`` with the name of your input CSV file.
+- Replace ``output.csv`` with the name of the output file where you want to save the modified data.
+
+This script reads each line of the input file, replaces commas with points (using the ``!line:,=! .!`` part), and writes the modified line to the output file.
+
+ 
