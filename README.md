@@ -1,14 +1,21 @@
 # Batch utils
-Recopilation of batch utils to automatize different tasks
+Compilation of batch scripts to automate different tasks.
 
+Files and folders
+---
 [Create folders with the name provided by a .txt file](#create-folders-with-the-name-provided-by-a-txt-file)
 
 [Save files of a directory in folders with the name of file extensions](#save-files-of-a-directory-in-folders-with-the-name-of-file-extensions)
 
 [Backups to an external drive](#backups-to-an-external-drive)
 
+Internet and connections
+---
 [Remote desktop automatic connection](#remote-desktop-automatic-connection)
 
+
+Work with files
+---
 [Replace comma to points in csv file](#replace-comma-to-points-in-csv-file)
 
 ## Create folders with the name provided by a txt file
