@@ -1,4 +1,11 @@
 # Batch utils
+
+
+<p align="center">
+  <img width="240" height="180" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Windows_Terminal_logo.svg/640px-Windows_Terminal_logo.svg.png">
+</p>
+
+
 Compilation of batch scripts to automate different tasks.
 
 Files and folders
